@@ -17,3 +17,8 @@ variable "public_subnet_b_id" {
   description = "ID of public subnet b"
   type        = string
 }
+
+variable "app_port" {
+  description = "The application port"
+  type        = number
+}

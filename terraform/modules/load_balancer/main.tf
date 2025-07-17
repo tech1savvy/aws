@@ -11,11 +11,21 @@ resource "aws_lb_target_group" "main" {
   port     = 5173
   protocol = "HTTP"
   vpc_id   = var.vpc_id
+
+  health_check {
+    path                = "/"
+    protocol            = "HTTP"
+    port                = "traffic-port"
+    healthy_threshold   = 2
+    unhealthy_threshold = 2
+    timeout             = 3
+    interval            = 30
+  }
 }
 
 resource "aws_lb_listener" "main" {
   load_balancer_arn = aws_lb.main.arn
-  port              = 5173
+  port              = 80
   protocol          = "HTTP"
 
   default_action {
