@@ -8,7 +8,7 @@ resource "aws_lb" "main" {
 
 resource "aws_lb_target_group" "main" {
   name     = "key-sensei-tg"
-  port     = 5173
+  port     = 80
   protocol = "HTTP"
   vpc_id   = var.vpc_id
 
